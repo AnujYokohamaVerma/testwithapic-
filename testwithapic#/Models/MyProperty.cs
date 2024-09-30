@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace testwithapic_.Models
 {
@@ -10,6 +11,6 @@ namespace testwithapic_.Models
         [Required]
         public string Name { get; set; }
 
-        public string DisplayOrder { get; set; }
+        public int DisplayOrder { get; set; }
     }
 }
