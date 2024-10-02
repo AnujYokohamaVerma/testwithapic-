@@ -22,6 +22,12 @@ namespace testwithapic_.Controllers
         {
             return View();
         }
-
+        [HttpPost]
+        public IActionResult Create2(MyProperty obj)
+        {
+            _db.MyProperty.Add(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
