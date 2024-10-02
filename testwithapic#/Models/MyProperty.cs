@@ -5,7 +5,6 @@ namespace testwithapic_.Models
 {
     public class MyProperty
     {
-
         [Key]
         public int Id { get; set; }
         [Required]

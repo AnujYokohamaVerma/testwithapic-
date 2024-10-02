@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using testwithapic_.Data;
+using testwithapic_.Models;
 
 namespace testwithapic_.Controllers
 {
-
     public class CategoryController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -14,7 +14,7 @@ namespace testwithapic_.Controllers
         public IActionResult Index()
         {
             List<Category> objCategoryList = _db.Categoryies.ToList();
-            List<MyPropertyController> objMyPropertyList = _db.MyProperty.ToList();
+            
             return View();
         }
     }
