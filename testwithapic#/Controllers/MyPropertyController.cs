@@ -16,7 +16,12 @@ namespace testwithapic_.Controllers
         public IActionResult Index()
         {
             List<MyProperty> objmypropertylist = _db.MyProperty.ToList();
+            return View(objmypropertylist);
+        }
+        public IActionResult Create2()
+        {
             return View();
         }
+
     }
 }

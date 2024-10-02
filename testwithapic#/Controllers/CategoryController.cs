@@ -15,6 +15,10 @@ namespace testwithapic_.Controllers
         {
             List<Category> objCategoryList = _db.Categoryies.ToList();
             
+            return View(objCategoryList);
+        }
+        public IActionResult Create1()
+        {
             return View();
         }
     }

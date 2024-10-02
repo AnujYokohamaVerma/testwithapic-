@@ -1,1 +1,42 @@
-﻿<h1>Hello!!</h1>
+﻿@model List<MyProperty>
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-black">
+                Property List
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="MyProperty" asp-action="Create2" class="btn btn-primary">
+                <i class="bi bi-node-plus"></i> Create New Property
+            </a>
+
+        </div>
+    </div>
+
+<table class="table tabletable-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                Property Name
+            </th>
+            <th>
+                Display Order
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model.OrderBy(u => u.DisplayOrder))
+        {
+            <tr>
+                <td>
+                    @obj.Name
+                </td>
+                <td>
+                    @obj.DisplayOrder
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
