@@ -1,5 +1,52 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model List<MyProperty>
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-black">
+                Property List
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="MyProperty" asp-action="Create2" class="btn btn-primary">
+                <i class="bi bi-node-plus"></i> Create New Property
+            </a>
+
+        </div>
+    </div>
+
+<table class="table tabletable-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                Property Name
+            </th>
+            <th>
+                Display Order
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model.OrderBy(u => u.DisplayOrder))
+        {
+            <tr>
+                <td>
+                    @obj.Name
+                </td>
+                <td>
+                    @obj.DisplayOrder
+                </td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                            <a asp-controller="MyProperty" asp-action="Edit" asp-route-Id="@obj.Id" class="btn btn-primary mx-2">
+                                <i class="bi bi-pencil"></i> Edit
+                            </a>
+                            <a asp-controller="MyProperty" asp-action="Delete" asp-route-Id="@obj.Id" class="btn btn-danger mx-2">
+                                <i class="bi bi-trash"></i> Delete
+                            </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
