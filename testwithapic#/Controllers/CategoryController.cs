@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using c_.DataAccess1.Repository.IRepository;
+using Microsoft.AspNetCore.Mvc;
 using testwithapic_.Data;
 using testwithapic_.Models;
 
@@ -6,14 +7,14 @@ namespace testwithapic_.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        public CategoryController(ApplicationDbContext db) {
-            _db = db;
+        private readonly ICategoryRepository _categoryRepository;
+        public CategoryController(ICategoryRepository db) {
+            _categoryRepository = db;
         }
         
         public IActionResult Index()
         {
-            List<Category> objCategoryList = _db.Categoryies.ToList();
+            List<Category> objCategoryList = _categoryRepository.GetAll().ToList();
             
             return View(objCategoryList);
         }
@@ -30,8 +31,8 @@ namespace testwithapic_.Controllers
             }
             if (ModelState.IsValid)
             {
-                _db.Categoryies.Add(obj);
-                _db.SaveChanges();
+                _categoryRepository.Add(obj);
+                _categoryRepository.Save();
                 TempData["success"] = "New Category was Created!";
                 return RedirectToAction("Index");
             }
@@ -41,7 +42,7 @@ namespace testwithapic_.Controllers
         public IActionResult Edit(int? Id)
         {
             if(Id == null || Id == 0) { return NotFound(); }
-            Category categoryFromDb = _db.Categoryies.Find(Id);
+            Category? categoryFromDb = _categoryRepository.GetFirstOrDefault(u => u.Id == Id);
             if (categoryFromDb == null)
             {
                 return NotFound();
@@ -53,8 +54,8 @@ namespace testwithapic_.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Categoryies.Update(obj);
-                _db.SaveChanges();
+                _categoryRepository.update(obj);
+                _categoryRepository.Save();
                 TempData["success"] = "Category was Updated!";
                 return RedirectToAction("Index");
             }
@@ -64,7 +65,7 @@ namespace testwithapic_.Controllers
         public IActionResult Delete(int? Id)
         {
             if (Id == null || Id == 0) { return NotFound(); }
-            Category categoryFromDb = _db.Categoryies.Find(Id);
+            Category? categoryFromDb = _categoryRepository.GetFirstOrDefault(u => u.Id == Id);
             if (categoryFromDb == null)
             {
                 return NotFound();
@@ -74,13 +75,13 @@ namespace testwithapic_.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePost(int? Id)
         {
-            Category obj = _db.Categoryies.Find(Id);
+            Category? obj = _categoryRepository.GetFirstOrDefault(u => u.Id == Id);
             if (obj == null)
             {
                 return NotFound();
             }
-            _db.Categoryies.Remove(obj); ;
-            _db.SaveChanges();
+            _categoryRepository.Delete(obj);
+            _categoryRepository.Save();
             TempData["success"] = "Category was Deleted";
             return RedirectToAction("Index");
         }

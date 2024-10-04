@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using c_.DataAccess1.Repository.IRepository;
+using Microsoft.AspNetCore.Mvc;
 using testwithapic_.Data;
 using testwithapic_.Models;
 
@@ -6,16 +7,16 @@ namespace testwithapic_.Controllers
 {
     public class MyPropertyController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        public MyPropertyController(ApplicationDbContext db)
+        private readonly IMyPropertyRepository _myPropertyRepository;
+        public MyPropertyController(IMyPropertyRepository db)
         {
-            _db = db;
+            _myPropertyRepository = db;
         }
 
 
         public IActionResult Index()
         {
-            List<MyProperty> objmypropertylist = _db.MyProperty.ToList();
+            List<MyProperty> objmypropertylist = _myPropertyRepository.GetAll().ToList();
             return View(objmypropertylist);
         }
         public IActionResult Create2()
@@ -31,8 +32,8 @@ namespace testwithapic_.Controllers
             }
             if (ModelState.IsValid)
             {
-                _db.MyProperty.Add(obj);
-                _db.SaveChanges();
+                _myPropertyRepository.Add(obj);
+                _myPropertyRepository.Save();
                 TempData["success"] = "New Property was Created!";
                 return RedirectToAction("Index");
             }
@@ -42,7 +43,7 @@ namespace testwithapic_.Controllers
         public IActionResult Edit(int? Id)
         {
             if (Id == null || Id == 0) { return NotFound(); }
-            MyProperty propertyFromDb = _db.MyProperty.Find(Id);
+            MyProperty? propertyFromDb = _myPropertyRepository.GetFirstOrDefault(u => u.Id == Id);
             if (propertyFromDb == null)
             {
                 return NotFound();
@@ -54,8 +55,8 @@ namespace testwithapic_.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.MyProperty.Update(obj);
-                _db.SaveChanges();
+                _myPropertyRepository.update(obj);
+                _myPropertyRepository.Save();
                 TempData["success"] = "Property was Updated!";
                 return RedirectToAction("Index");
             }
@@ -65,7 +66,7 @@ namespace testwithapic_.Controllers
         public IActionResult Delete(int? Id)
         {
             if (Id == null || Id == 0) { return NotFound(); }
-            MyProperty propertyFromDb = _db.MyProperty.Find(Id);
+            MyProperty? propertyFromDb = _myPropertyRepository.GetFirstOrDefault(u => u.Id == Id);
             if (propertyFromDb == null)
             {
                 return NotFound();
@@ -75,13 +76,13 @@ namespace testwithapic_.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePost(int? Id)
         {
-            MyProperty obj = _db.MyProperty.Find(Id);
+            MyProperty? obj = _myPropertyRepository.GetFirstOrDefault(u => u.Id == Id);
             if (obj == null)
             {
                 return NotFound();
             }
-            _db.MyProperty.Remove(obj); ;
-            _db.SaveChanges();
+            _myPropertyRepository.Delete(obj); ;
+            _myPropertyRepository.Save();
             TempData["success"] = "Property was Deleted";
             return RedirectToAction("Index");
 
