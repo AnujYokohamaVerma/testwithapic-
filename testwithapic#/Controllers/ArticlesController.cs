@@ -33,6 +33,8 @@ namespace testwithapic_.Controllers
             
             if (ModelState.IsValid)
             {
+                obj.CreatedDate = DateTime.Now;
+                obj.ModifiedDate = DateTime.Now;
                 _articlesRepository.Add(obj);
                 _articlesRepository.Save();
                 TempData["success"] = "New Article was Created!";
@@ -56,6 +58,7 @@ namespace testwithapic_.Controllers
         {
             if (ModelState.IsValid)
             {
+                obj.ModifiedDate = DateTime.Now;
                 _articlesRepository.update(obj);
                 _articlesRepository.Save();
                 TempData["success"] = "Article was Updated!";
