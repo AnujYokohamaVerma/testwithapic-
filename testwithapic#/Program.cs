@@ -1,3 +1,4 @@
+using c_.DataAccess1.Repository;
 using c_.DataAccess1.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using testwithapic_.Data;
@@ -14,6 +15,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 //builder.Services.AddScoped<IScopedGuideService, ScopedGuideService>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IMyPropertyRepository, MyPropertyRepository>();
+builder.Services.AddScoped<IArticlesRepository, ArticalesRepository>();
 
 
 var app = builder.Build();

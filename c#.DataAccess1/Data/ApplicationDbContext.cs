@@ -11,6 +11,7 @@ namespace testwithapic_.Data
         }
         public DbSet<Category> Categoryies { get; set; }
         public DbSet<MyProperty> MyProperty { get; set; }
+        public DbSet<Articles> Articles { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -25,6 +26,10 @@ namespace testwithapic_.Data
                 new MyProperty { Id = 2, Name = "School", DisplayOrder = 2 },
                 new MyProperty { Id = 3, Name = "Games", DisplayOrder = 3 }
                 );
+            modelBuilder.Entity<Articles>().HasData(
+               new Articles {Id = 1, Title = "ReadMe", Artical = "WAKE UP!!! THEY DONT WANT YOU TO WAKE UP, YOU NEED TO STOP DOING WHAT THEY TELL YOU!!! YOUR REAL NAME IS AKENO!!", 
+                   CreatedDate = DateTime.Today, ModifiedDate = DateTime.Today}
+               );
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
