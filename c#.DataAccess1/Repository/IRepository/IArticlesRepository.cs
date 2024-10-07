@@ -11,5 +11,6 @@ namespace c_.DataAccess1.Repository.IRepository
     {
         void update(Articles obj);
         void Save();
+        public void Detach(Articles entity);
     }
 }

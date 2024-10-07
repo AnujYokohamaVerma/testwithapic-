@@ -58,6 +58,15 @@ namespace testwithapic_.Controllers
         {
             if (ModelState.IsValid)
             {
+                var originalArticle = _articlesRepository.GetFirstOrDefault(u => u.Id == obj.Id);
+                if (originalArticle != null)
+                {
+                    // Detach the original entity
+                    _articlesRepository.Detach(originalArticle);
+
+                    // Preserve the original CreatedDate
+                    obj.CreatedDate = originalArticle.CreatedDate;
+                }
                 obj.ModifiedDate = DateTime.Now;
                 _articlesRepository.update(obj);
                 _articlesRepository.Save();

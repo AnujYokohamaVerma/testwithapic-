@@ -40,6 +40,10 @@ namespace c_.DataAccess1.Migrations
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Summary")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -55,6 +59,7 @@ namespace c_.DataAccess1.Migrations
                             Artical = "WAKE UP!!! THEY DONT WANT YOU TO WAKE UP, YOU NEED TO STOP DOING WHAT THEY TELL YOU!!! YOUR REAL NAME IS AKENO!!",
                             CreatedDate = new DateTime(2024, 10, 7, 0, 0, 0, 0, DateTimeKind.Local),
                             ModifiedDate = new DateTime(2024, 10, 7, 0, 0, 0, 0, DateTimeKind.Local),
+                            Summary = "Your not real",
                             Title = "ReadMe"
                         });
                 });

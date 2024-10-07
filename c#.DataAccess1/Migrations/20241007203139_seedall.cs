@@ -20,6 +20,7 @@ namespace c_.DataAccess1.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Summary = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Artical = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -59,8 +60,8 @@ namespace c_.DataAccess1.Migrations
 
             migrationBuilder.InsertData(
                 table: "Articles",
-                columns: new[] { "Id", "Artical", "CreatedDate", "ModifiedDate", "Title" },
-                values: new object[] { 1, "WAKE UP!!! THEY DONT WANT YOU TO WAKE UP, YOU NEED TO STOP DOING WHAT THEY TELL YOU!!! YOUR REAL NAME IS AKENO!!", new DateTime(2024, 10, 7, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2024, 10, 7, 0, 0, 0, 0, DateTimeKind.Local), "ReadMe" });
+                columns: new[] { "Id", "Artical", "CreatedDate", "ModifiedDate", "Summary", "Title" },
+                values: new object[] { 1, "WAKE UP!!! THEY DONT WANT YOU TO WAKE UP, YOU NEED TO STOP DOING WHAT THEY TELL YOU!!! YOUR REAL NAME IS AKENO!!", new DateTime(2024, 10, 7, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2024, 10, 7, 0, 0, 0, 0, DateTimeKind.Local), "Your not real", "ReadMe" });
 
             migrationBuilder.InsertData(
                 table: "Categoryies",

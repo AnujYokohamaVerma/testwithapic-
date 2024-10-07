@@ -13,6 +13,9 @@ namespace testwithapic_.Models
         [DisplayName("Article Title ")]
         public string Title { get; set; }
 
+        [DisplayName("Summary")]
+        public string Summary { get; set; }
+
         [DisplayName("Artical")]
         public string Artical { get; set; }
         [DisplayName("Date Created")]
