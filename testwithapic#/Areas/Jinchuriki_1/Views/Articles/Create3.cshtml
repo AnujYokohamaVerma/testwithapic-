@@ -28,6 +28,10 @@
                     <span asp-validation-for="Artical" class="text-danger"></span>
                 </div>
                 <div class="mb-3 row p-1">
+                    <label asp-for="ImageFile" class="p-0"></label>
+                    <input type="file" class="form-control"/>
+                </div>
+                <div class="mb-3 row p-1">
                     <label asp-for="CreatedDate" class="p-0"></label>
                     <input asp-for="CreatedDate" disabled class="form-control" />
                 </div>
@@ -37,7 +41,7 @@
                 </div>
                 <div class="row mt-5">
                     <div class="col-6">
-                        <button typeof="submit" class="btn btn-primary form-control" style="float:left">
+                        <button type="submit" class="btn btn-primary form-control" style="float:left">
                             Create
                         </button>
                     </div>

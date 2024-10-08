@@ -23,6 +23,9 @@ namespace testwithapic_.Models
         [DisplayName("Date Edited")]
         public DateTime ModifiedDate { get; set; }
 
+        [DisplayName("Image File")]
+        public string ImageFile { get; set; }
+
     }
 
 

@@ -23,7 +23,8 @@ namespace c_.DataAccess1.Migrations
                     Summary = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Artical = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ImageFile = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -60,8 +61,8 @@ namespace c_.DataAccess1.Migrations
 
             migrationBuilder.InsertData(
                 table: "Articles",
-                columns: new[] { "Id", "Artical", "CreatedDate", "ModifiedDate", "Summary", "Title" },
-                values: new object[] { 1, "WAKE UP!!! THEY DONT WANT YOU TO WAKE UP, YOU NEED TO STOP DOING WHAT THEY TELL YOU!!! YOUR REAL NAME IS AKENO!!", new DateTime(2024, 10, 8, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2024, 10, 8, 0, 0, 0, 0, DateTimeKind.Local), "Your not real", "ReadMe" });
+                columns: new[] { "Id", "Artical", "CreatedDate", "ImageFile", "ModifiedDate", "Summary", "Title" },
+                values: new object[] { 1, "WAKE UP!!! THEY DONT WANT YOU TO WAKE UP, YOU NEED TO STOP DOING WHAT THEY TELL YOU!!! YOUR REAL NAME IS AKENO!!", new DateTime(2024, 10, 8, 0, 0, 0, 0, DateTimeKind.Local), "", new DateTime(2024, 10, 8, 0, 0, 0, 0, DateTimeKind.Local), "Your not real", "ReadMe" });
 
             migrationBuilder.InsertData(
                 table: "Categoryies",

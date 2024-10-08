@@ -27,7 +27,9 @@ namespace testwithapic_.Data
                 new MyProperty { Id = 3, Name = "Games", DisplayOrder = 3 }
                 );
             modelBuilder.Entity<Articles>().HasData(
-               new Articles {Id = 1, Title = "ReadMe", Summary="Your not real", Artical = "WAKE UP!!! THEY DONT WANT YOU TO WAKE UP, YOU NEED TO STOP DOING WHAT THEY TELL YOU!!! YOUR REAL NAME IS AKENO!!", 
+               new Articles {Id = 1, Title = "ReadMe", Summary="Your not real", 
+                   Artical = "WAKE UP!!! THEY DONT WANT YOU TO WAKE UP, YOU NEED TO STOP DOING WHAT THEY TELL YOU!!! YOUR REAL NAME IS AKENO!!", 
+                   ImageFile = "",
                    CreatedDate = DateTime.Today, ModifiedDate = DateTime.Today}
                );
         }

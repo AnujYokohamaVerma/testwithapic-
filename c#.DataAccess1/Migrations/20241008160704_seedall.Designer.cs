@@ -12,7 +12,7 @@ using testwithapic_.Data;
 namespace c_.DataAccess1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241008155815_seedall")]
+    [Migration("20241008160704_seedall")]
     partial class seedall
     {
         /// <inheritdoc />
@@ -40,6 +40,10 @@ namespace c_.DataAccess1.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("ImageFile")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
 
@@ -61,6 +65,7 @@ namespace c_.DataAccess1.Migrations
                             Id = 1,
                             Artical = "WAKE UP!!! THEY DONT WANT YOU TO WAKE UP, YOU NEED TO STOP DOING WHAT THEY TELL YOU!!! YOUR REAL NAME IS AKENO!!",
                             CreatedDate = new DateTime(2024, 10, 8, 0, 0, 0, 0, DateTimeKind.Local),
+                            ImageFile = "",
                             ModifiedDate = new DateTime(2024, 10, 8, 0, 0, 0, 0, DateTimeKind.Local),
                             Summary = "Your not real",
                             Title = "ReadMe"
