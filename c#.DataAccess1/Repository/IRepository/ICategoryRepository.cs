@@ -10,6 +10,6 @@ namespace c_.DataAccess1.Repository.IRepository
     public interface ICategoryRepository : IRepository<Category>
     {
         void update(Category obj);
-        void Save();
+       
     }
 }

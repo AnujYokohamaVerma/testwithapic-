@@ -3,19 +3,21 @@ using Microsoft.AspNetCore.Mvc;
 using testwithapic_.Data;
 using testwithapic_.Models;
 
-namespace testwithapic_.Controllers
+namespace testwithapic_.Areas.Espada_2.Controllers
 {
+    [Area("Espada_2")]
     public class CategoryController : Controller
     {
-        private readonly ICategoryRepository _categoryRepository;
-        public CategoryController(ICategoryRepository db) {
-            _categoryRepository = db;
+        private readonly IUnitOfWork _unitOfWrok;
+        public CategoryController(IUnitOfWork unitOfWrok)
+        {
+            _unitOfWrok = unitOfWrok;
         }
-        
+
         public IActionResult Index()
         {
-            List<Category> objCategoryList = _categoryRepository.GetAll().ToList();
-            
+            List<Category> objCategoryList = _unitOfWrok.Category.GetAll().ToList();
+
             return View(objCategoryList);
         }
         public IActionResult Create1()
@@ -31,18 +33,18 @@ namespace testwithapic_.Controllers
             }
             if (ModelState.IsValid)
             {
-                _categoryRepository.Add(obj);
-                _categoryRepository.Save();
+                _unitOfWrok.Category.Add(obj);
+                _unitOfWrok.Save();
                 TempData["success"] = "New Category was Created!";
                 return RedirectToAction("Index");
             }
             return View();
-            
+
         }
         public IActionResult Edit(int? Id)
         {
-            if(Id == null || Id == 0) { return NotFound(); }
-            Category? categoryFromDb = _categoryRepository.GetFirstOrDefault(u => u.Id == Id);
+            if (Id == null || Id == 0) { return NotFound(); }
+            Category? categoryFromDb = _unitOfWrok.Category.GetFirstOrDefault(u => u.Id == Id);
             if (categoryFromDb == null)
             {
                 return NotFound();
@@ -54,8 +56,8 @@ namespace testwithapic_.Controllers
         {
             if (ModelState.IsValid)
             {
-                _categoryRepository.update(obj);
-                _categoryRepository.Save();
+                _unitOfWrok.Category.update(obj);
+                _unitOfWrok.Save();
                 TempData["success"] = "Category was Updated!";
                 return RedirectToAction("Index");
             }
@@ -65,7 +67,7 @@ namespace testwithapic_.Controllers
         public IActionResult Delete(int? Id)
         {
             if (Id == null || Id == 0) { return NotFound(); }
-            Category? categoryFromDb = _categoryRepository.GetFirstOrDefault(u => u.Id == Id);
+            Category? categoryFromDb = _unitOfWrok.Category.GetFirstOrDefault(u => u.Id == Id);
             if (categoryFromDb == null)
             {
                 return NotFound();
@@ -75,13 +77,13 @@ namespace testwithapic_.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePost(int? Id)
         {
-            Category? obj = _categoryRepository.GetFirstOrDefault(u => u.Id == Id);
+            Category? obj = _unitOfWrok.Category.GetFirstOrDefault(u => u.Id == Id);
             if (obj == null)
             {
                 return NotFound();
             }
-            _categoryRepository.Delete(obj);
-            _categoryRepository.Save();
+            _unitOfWrok.Category.Delete(obj);
+            _unitOfWrok.Save();
             TempData["success"] = "Category was Deleted";
             return RedirectToAction("Index");
         }

@@ -13,9 +13,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 //builder.Services.AddSingleton<ISingletonGuidService, SingletonGuidService>();
 //builder.Services.AddTransient<ITransientGuidServices, TransientGuideService>();
 //builder.Services.AddScoped<IScopedGuideService, ScopedGuideService>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<IMyPropertyRepository, MyPropertyRepository>();
-builder.Services.AddScoped<IArticlesRepository, ArticalesRepository>();
+//builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+//builder.Services.AddScoped<IMyPropertyRepository, MyPropertyRepository>();
+//builder.Services.AddScoped<IArticlesRepository, ArticalesRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
 var app = builder.Build();
@@ -37,6 +38,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area=Shinigami_5}/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

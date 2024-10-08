@@ -21,4 +21,10 @@
     <ProjectReference Include="..\c#.DataAccess1\c#.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Saiyan_4\Controllers\" />
+    <Folder Include="Areas\Titan_3\Controllers\" />
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>

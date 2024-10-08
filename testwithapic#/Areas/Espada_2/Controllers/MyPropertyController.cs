@@ -3,20 +3,21 @@ using Microsoft.AspNetCore.Mvc;
 using testwithapic_.Data;
 using testwithapic_.Models;
 
-namespace testwithapic_.Controllers
+namespace testwithapic_.Areas.Espada_2.Controllers
 {
+    [Area("Espada_2")]
     public class MyPropertyController : Controller
     {
-        private readonly IMyPropertyRepository _myPropertyRepository;
-        public MyPropertyController(IMyPropertyRepository db)
+        private readonly IUnitOfWork _unitOfWork;
+        public MyPropertyController(IUnitOfWork unitOfWork)
         {
-            _myPropertyRepository = db;
+            _unitOfWork = unitOfWork;
         }
 
 
         public IActionResult Index()
         {
-            List<MyProperty> objmypropertylist = _myPropertyRepository.GetAll().ToList();
+            List<MyProperty> objmypropertylist = _unitOfWork.MyProperty.GetAll().ToList();
             return View(objmypropertylist);
         }
         public IActionResult Create2()
@@ -32,18 +33,18 @@ namespace testwithapic_.Controllers
             }
             if (ModelState.IsValid)
             {
-                _myPropertyRepository.Add(obj);
-                _myPropertyRepository.Save();
+                _unitOfWork.MyProperty.Add(obj);
+                _unitOfWork.Save();
                 TempData["success"] = "New Property was Created!";
                 return RedirectToAction("Index");
             }
             return View();
-            
+
         }
         public IActionResult Edit(int? Id)
         {
             if (Id == null || Id == 0) { return NotFound(); }
-            MyProperty? propertyFromDb = _myPropertyRepository.GetFirstOrDefault(u => u.Id == Id);
+            MyProperty? propertyFromDb = _unitOfWork.MyProperty.GetFirstOrDefault(u => u.Id == Id);
             if (propertyFromDb == null)
             {
                 return NotFound();
@@ -55,8 +56,8 @@ namespace testwithapic_.Controllers
         {
             if (ModelState.IsValid)
             {
-                _myPropertyRepository.update(obj);
-                _myPropertyRepository.Save();
+                _unitOfWork.MyProperty.update(obj);
+                _unitOfWork.Save();
                 TempData["success"] = "Property was Updated!";
                 return RedirectToAction("Index");
             }
@@ -66,7 +67,7 @@ namespace testwithapic_.Controllers
         public IActionResult Delete(int? Id)
         {
             if (Id == null || Id == 0) { return NotFound(); }
-            MyProperty? propertyFromDb = _myPropertyRepository.GetFirstOrDefault(u => u.Id == Id);
+            MyProperty? propertyFromDb = _unitOfWork.MyProperty.GetFirstOrDefault(u => u.Id == Id);
             if (propertyFromDb == null)
             {
                 return NotFound();
@@ -76,13 +77,13 @@ namespace testwithapic_.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePost(int? Id)
         {
-            MyProperty? obj = _myPropertyRepository.GetFirstOrDefault(u => u.Id == Id);
+            MyProperty? obj = _unitOfWork.MyProperty.GetFirstOrDefault(u => u.Id == Id);
             if (obj == null)
             {
                 return NotFound();
             }
-            _myPropertyRepository.Delete(obj); ;
-            _myPropertyRepository.Save();
+            _unitOfWork.MyProperty.Delete(obj); ;
+            _unitOfWork.Save();
             TempData["success"] = "Property was Deleted";
             return RedirectToAction("Index");
 

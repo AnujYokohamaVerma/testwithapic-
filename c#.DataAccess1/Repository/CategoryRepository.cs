@@ -17,11 +17,6 @@ namespace c_.DataAccess1.Repository
             _db = db;
         }
 
-        public void Save()
-        {
-            _db.SaveChanges();
-        }
-
         public void update(Category obj)
         {
             _db.Categoryies.Update(obj);

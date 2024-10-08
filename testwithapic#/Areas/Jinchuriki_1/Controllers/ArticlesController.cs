@@ -6,20 +6,21 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using testwithapic_.Data;
 using testwithapic_.Models;
 
-namespace testwithapic_.Controllers
+namespace testwithapic_.Areas.Jinchuriki_1.Controllers
 {
+    [Area("Jinchuriki_1")]
     public class ArticlesController : Controller
     {
-        private readonly IArticlesRepository _articlesRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public ArticlesController(IArticlesRepository db)
+        public ArticlesController(IUnitOfWork unitOfWork)
         {
-            _articlesRepository = db;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            List<Articles> objCategoryList = _articlesRepository.GetAll().ToList();
+            List<Articles> objCategoryList = _unitOfWork.Articles.GetAll().ToList();
 
             return View(objCategoryList);
         }
@@ -30,13 +31,13 @@ namespace testwithapic_.Controllers
         [HttpPost]
         public IActionResult Create3(Articles obj)
         {
-            
+
             if (ModelState.IsValid)
             {
                 obj.CreatedDate = DateTime.Now;
                 obj.ModifiedDate = DateTime.Now;
-                _articlesRepository.Add(obj);
-                _articlesRepository.Save();
+                _unitOfWork.Articles.Add(obj);
+                _unitOfWork.Save();
                 TempData["success"] = "New Article was Created!";
                 return RedirectToAction("Index");
             }
@@ -46,7 +47,7 @@ namespace testwithapic_.Controllers
         public IActionResult Edit(int? Id)
         {
             if (Id == null || Id == 0) { return NotFound(); }
-            Articles? articlesFromDb = _articlesRepository.GetFirstOrDefault(u => u.Id == Id);
+            Articles? articlesFromDb = _unitOfWork.Articles.GetFirstOrDefault(u => u.Id == Id);
             if (articlesFromDb == null)
             {
                 return NotFound();
@@ -58,18 +59,18 @@ namespace testwithapic_.Controllers
         {
             if (ModelState.IsValid)
             {
-                var originalArticle = _articlesRepository.GetFirstOrDefault(u => u.Id == obj.Id);
+                var originalArticle = _unitOfWork.Articles.GetFirstOrDefault(u => u.Id == obj.Id);
                 if (originalArticle != null)
                 {
                     // Detach the original entity
-                    _articlesRepository.Detach(originalArticle);
+                    _unitOfWork.Articles.Detach(originalArticle);
 
                     // Preserve the original CreatedDate
                     obj.CreatedDate = originalArticle.CreatedDate;
                 }
                 obj.ModifiedDate = DateTime.Now;
-                _articlesRepository.update(obj);
-                _articlesRepository.Save();
+                _unitOfWork.Articles.update(obj);
+                _unitOfWork.Save();
                 TempData["success"] = "Article was Updated!";
                 return RedirectToAction("Index");
             }
@@ -79,7 +80,7 @@ namespace testwithapic_.Controllers
         public IActionResult Delete(int? Id)
         {
             if (Id == null || Id == 0) { return NotFound(); }
-            Articles? articlesFromDb = _articlesRepository.GetFirstOrDefault(u => u.Id == Id);
+            Articles? articlesFromDb = _unitOfWork.Articles.GetFirstOrDefault(u => u.Id == Id);
             if (articlesFromDb == null)
             {
                 return NotFound();
@@ -89,17 +90,17 @@ namespace testwithapic_.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePost(int? Id)
         {
-            Articles? obj = _articlesRepository.GetFirstOrDefault(u => u.Id == Id);
+            Articles? obj = _unitOfWork.Articles.GetFirstOrDefault(u => u.Id == Id);
             if (obj == null)
             {
                 return NotFound();
             }
-            _articlesRepository.Delete(obj);
-            _articlesRepository.Save();
+            _unitOfWork.Articles.Delete(obj);
+            _unitOfWork.Save();
             TempData["success"] = "Article was Deleted";
             return RedirectToAction("Index");
         }
 
     }
-    
+
 }

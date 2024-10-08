@@ -3,8 +3,9 @@ using System.Diagnostics;
 using testwithapic_.Models;
 using testwithapic_.Services;
 
-namespace testwithapic_.Controllers
+namespace testwithapic_.Areas.Shinigami_5.Controllers
 {
+    [Area("Shinigami_5")]
     public class HomeController : Controller
     {
         //private readonly IScopedGuideService _scoped1;
