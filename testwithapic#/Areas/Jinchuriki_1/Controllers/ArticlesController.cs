@@ -48,12 +48,14 @@ namespace testwithapic_.Areas.Jinchuriki_1.Controllers
                 {
                     string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
                     string productPath = Path.Combine(wwwRootPath, @"Images\Articles");
+                   
                     using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
                     {
                         file.CopyTo(fileStream);
                     }
-                    obj.ImageFile= @"\images\Articles"+fileName;
+                    obj.ImageFile= @"\images\Articles\"+fileName;
                 }
+                _unitOfWork.Articles.Add(obj);
                 obj.CreatedDate = DateTime.Now;
                 obj.ModifiedDate = DateTime.Now;
                 _unitOfWork.Articles.Add(obj);
@@ -75,10 +77,30 @@ namespace testwithapic_.Areas.Jinchuriki_1.Controllers
             return View(articlesFromDb);
         }
         [HttpPost]
-        public IActionResult Edit(Articles obj)
+        public IActionResult Edit(Articles obj, IFormFile? file)
         {
             if (ModelState.IsValid)
             {
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                string oldImagePath = obj.ImageFile != null ? Path.Combine(wwwRootPath, obj.ImageFile.TrimStart('\\')) : null;
+
+                if (file != null)
+                {
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    string productPath = Path.Combine(wwwRootPath, @"Images\Articles");
+
+                    using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
+                    {
+                        file.CopyTo(fileStream);
+                    }
+                    obj.ImageFile = @"\images\Articles\" + fileName;
+                }
+
+                if (oldImagePath != null && System.IO.File.Exists(oldImagePath))
+                {
+                    System.IO.File.Delete(oldImagePath);
+                }
+
                 var originalArticle = _unitOfWork.Articles.GetFirstOrDefault(u => u.Id == obj.Id);
                 if (originalArticle != null)
                 {
@@ -95,8 +117,8 @@ namespace testwithapic_.Areas.Jinchuriki_1.Controllers
                 return RedirectToAction("Index");
             }
             return View();
-
         }
+
         public IActionResult Delete(int? Id)
         {
             if (Id == null || Id == 0) { return NotFound(); }

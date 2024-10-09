@@ -10,44 +10,52 @@
     </div>
     <div class="card-body p-0 row">
         <form method="post">
-            <div class="border p-3 mt-0">
-                <div asp-validation-summary="All"></div>
-                <div class="mb-3 row p-1">
-                    <label asp-for="Title" class="p-0"></label>
-                    <input asp-for="Title" disabled class="form-control" />
-                    <span asp-validation-for="Title" class="text-danger"></span>
-                </div>
-                <div class="mb-3 row p-1">
-                    <label asp-for="Summary" class="p-0"></label>
-                    <input asp-for="Summary" disabled class="form-control" />
-                    <span asp-validation-for="Summary" class="text-danger"></span>
-                </div>
-                <div class="mb-3 row p-1">
-                    <label asp-for="Artical" class="p-0"></label>
-                    <textarea asp-for="Artical" class="form-control summernote"></textarea>
-                    <span asp-validation-for="Artical" class="text-danger"></span>
-                </div>
-                <div class="mb-3 row p-1">
-                    <label asp-for="CreatedDate" class="p-0"></label>
-                    <input asp-for="CreatedDate" disabled class="form-control" />
-                </div>
-                <div class="mb-3 row p-1">
-                    <label asp-for="ModifiedDate" class="p-0"></label>
-                    <input asp-for="ModifiedDate" disabled class="form-control" />
-                </div>
-                <div class="row mt-5">
-                    <div class="col-6">
-                        <button type="Delete" class="btn btn-primary form-control" style="float:left">
-                            Delete
-                        </button>
+            <div class="row">
+                <div class="col-8">
+                    <div class="border p-3 mt-0">
+                        <div asp-validation-summary="All"></div>
+                        <div class="mb-3 row p-1">
+                            <label asp-for="Title" class="p-0"></label>
+                            <input asp-for="Title" disabled class="form-control" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 row p-1">
+                            <label asp-for="Summary" class="p-0"></label>
+                            <input asp-for="Summary" disabled class="form-control" />
+                            <span asp-validation-for="Summary" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 row p-1">
+                            <label asp-for="Artical" class="p-0"></label>
+                            <textarea asp-for="Artical" class="form-control summernote"></textarea>
+                            <span asp-validation-for="Artical" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 row p-1">
+                            <label asp-for="CreatedDate" class="p-0"></label>
+                            <input asp-for="CreatedDate" disabled class="form-control" />
+                        </div>
+                        <div class="mb-3 row p-1">
+                            <label asp-for="ModifiedDate" class="p-0"></label>
+                            <input asp-for="ModifiedDate" disabled class="form-control" />
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-6">
+                                <button type="Delete" class="btn btn-primary form-control" style="float:left">
+                                    Delete
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <a asp-controller="Articles" asp-action="Index" class="btn btn-secondary form-control" style="float:right">
+                                    Back To List
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-6">
-                        <a asp-controller="Articles" asp-action="Index" class="btn btn-secondary form-control" style="float:right">
-                            Back To List
-                        </a>
-                    </div>
+                </div>
+                <div class="col-4">
+                    <img src="@Model.ImageFile" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" />
                 </div>
             </div>
+           
         </form>
     </div>
     <div class="card-footer p-2 row"></div>
