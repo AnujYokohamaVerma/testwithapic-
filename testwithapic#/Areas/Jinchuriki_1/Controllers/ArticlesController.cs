@@ -1,8 +1,11 @@
 ﻿using c_.DataAccess1.Repository;
 using c_.DataAccess1.Repository.IRepository;
+using c_.Models.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using testwithapic_.Data;
 using testwithapic_.Models;
 
@@ -12,10 +15,11 @@ namespace testwithapic_.Areas.Jinchuriki_1.Controllers
     public class ArticlesController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-
-        public ArticlesController(IUnitOfWork unitOfWork)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public ArticlesController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment)
         {
             _unitOfWork = unitOfWork;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult Index()
@@ -26,14 +30,30 @@ namespace testwithapic_.Areas.Jinchuriki_1.Controllers
         }
         public IActionResult Create3()
         {
+            //ArticlesVM articlesVM = new ArticlesVM()
+            //{
+            //    Articles = new Articles()
+            //};
+            //articlesVM
             return View();
         }
         [HttpPost]
-        public IActionResult Create3(Articles obj)
+        public IActionResult Create3(Articles obj, IFormFile? file)
         {
 
             if (ModelState.IsValid)
             {
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                if(file != null)
+                {
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    string productPath = Path.Combine(wwwRootPath, @"Images\Articles");
+                    using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
+                    {
+                        file.CopyTo(fileStream);
+                    }
+                    obj.ImageFile= @"\images\Articles"+fileName;
+                }
                 obj.CreatedDate = DateTime.Now;
                 obj.ModifiedDate = DateTime.Now;
                 _unitOfWork.Articles.Add(obj);

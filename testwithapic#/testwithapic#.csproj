@@ -25,6 +25,7 @@
     <Folder Include="Areas\Saiyan_4\Controllers\" />
     <Folder Include="Areas\Titan_3\Controllers\" />
     <Folder Include="Controllers\" />
+    <Folder Include="wwwroot\Images\Articles\" />
   </ItemGroup>
 
 </Project>

@@ -9,7 +9,9 @@
         </div>
     </div>
     <div class="card-body p-0 row">
-        <form method="post">
+        <form method="post"enctype="multipart/form-data">
+@*             <input asp-for="Id" hidden/>
+            <input asp-for="ImageFile" hidden/> *@
             <div class="border p-3 mt-0">
                 <div asp-validation-summary="All"></div>
                 <div class="mb-3 row p-1">
@@ -29,7 +31,7 @@
                 </div>
                 <div class="mb-3 row p-1">
                     <label asp-for="ImageFile" class="p-0"></label>
-                    <input type="file" class="form-control"/>
+                    <input type="file" name="file" class="form-control"/>
                 </div>
                 <div class="mb-3 row p-1">
                     <label asp-for="CreatedDate" class="p-0"></label>
