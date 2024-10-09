@@ -70,6 +70,22 @@ namespace testwithapic_.Areas.Jinchuriki_1.Controllers
             return View();
 
         }
+
+        public IActionResult Read(int? Id)
+        {
+            if (Id == null || Id == 0) { return NotFound(); }
+            Articles? articlesFromDb = _unitOfWork.Articles.GetFirstOrDefault(u => u.Id == Id);
+            if (articlesFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(articlesFromDb);
+        }
+        [HttpPost, ActionName("Read")]
+        public IActionResult ReadGet(int? Id)
+        {
+            return RedirectToAction("Index");
+        }
         public IActionResult Edit(int? Id)
         {
             if (Id == null || Id == 0) { return NotFound(); }
