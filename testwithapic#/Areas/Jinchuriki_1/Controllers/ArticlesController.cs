@@ -55,6 +55,10 @@ namespace testwithapic_.Areas.Jinchuriki_1.Controllers
                     }
                     obj.ImageFile= @"\images\Articles\"+fileName;
                 }
+                else
+                {
+                    obj.ImageFile = @"\images\Default\default.jfif";
+                }
                 _unitOfWork.Articles.Add(obj);
                 obj.CreatedDate = DateTime.Now;
                 obj.ModifiedDate = DateTime.Now;
@@ -96,7 +100,7 @@ namespace testwithapic_.Areas.Jinchuriki_1.Controllers
                     obj.ImageFile = @"\images\Articles\" + fileName;
                 }
 
-                if (oldImagePath != null && System.IO.File.Exists(oldImagePath))
+                if (oldImagePath != null && System.IO.File.Exists(oldImagePath) && !oldImagePath.Contains(@"default"))
                 {
                     System.IO.File.Delete(oldImagePath);
                 }

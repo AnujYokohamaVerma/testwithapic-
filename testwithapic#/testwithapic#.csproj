@@ -26,6 +26,7 @@
     <Folder Include="Areas\Titan_3\Controllers\" />
     <Folder Include="Controllers\" />
     <Folder Include="wwwroot\Images\Articles\" />
+    <Folder Include="wwwroot\Images\Default\" />
   </ItemGroup>
 
 </Project>
