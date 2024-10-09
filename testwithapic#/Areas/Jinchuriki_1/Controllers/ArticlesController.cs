@@ -57,7 +57,7 @@ namespace testwithapic_.Areas.Jinchuriki_1.Controllers
                 }
                 else
                 {
-                    obj.ImageFile = @"\images\Default\default.jfif";
+                    obj.ImageFile = @"\images\Default\default.png";
                 }
                 _unitOfWork.Articles.Add(obj);
                 obj.CreatedDate = DateTime.Now;
@@ -156,6 +156,12 @@ namespace testwithapic_.Areas.Jinchuriki_1.Controllers
             if (obj == null)
             {
                 return NotFound();
+            }
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
+            string oldImagePath = obj.ImageFile != null ? Path.Combine(wwwRootPath, obj.ImageFile.TrimStart('\\')) : null;
+            if (oldImagePath != null && System.IO.File.Exists(oldImagePath) && !oldImagePath.Contains(@"default"))
+            {
+                System.IO.File.Delete(oldImagePath);
             }
             _unitOfWork.Articles.Delete(obj);
             _unitOfWork.Save();
