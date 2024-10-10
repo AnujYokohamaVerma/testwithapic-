@@ -3,10 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.Drawing;
 using testwithapic_.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace testwithapic_.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base (options) 
         {
