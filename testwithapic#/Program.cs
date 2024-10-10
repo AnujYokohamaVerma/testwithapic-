@@ -5,6 +5,8 @@ using testwithapic_.Data;
 using testwithapic_.Models;
 using testwithapic_.Services;
 using Microsoft.AspNetCore.Identity;
+using c_.Utility;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddRazorPages();
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddIdentity<IdentityUser,IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 //builder.Services.AddSingleton<ISingletonGuidService, SingletonGuidService>();
 //builder.Services.AddTransient<ITransientGuidServices, TransientGuideService>();
 //builder.Services.AddScoped<IScopedGuideService, ScopedGuideService>();
@@ -20,6 +22,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 //builder.Services.AddScoped<IMyPropertyRepository, MyPropertyRepository>();
 //builder.Services.AddScoped<IArticlesRepository, ArticalesRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 
 var app = builder.Build();

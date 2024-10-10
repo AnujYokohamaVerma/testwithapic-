@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using c_.Utility
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -47,15 +49,19 @@
                         <li class="nav-item">
                             <a class="nav-link " asp-area="Shinigami_5" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="Jinchuriki_1" asp-controller="Articles" asp-action="Index">Articles</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="Espada_2" asp-controller="Category" asp-action="Index">Category</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="Espada_2" asp-controller="MyProperty" asp-action="Index">MyProperty</a>
-                        </li>
+                        @if(User.IsInRole(SD.Role_Jinchuriki)){
+                            
+                            <li class="nav-item">
+                                <a class="nav-link " asp-area="Jinchuriki_1" asp-controller="Articles" asp-action="Index">Articles</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="Espada_2" asp-controller="Category" asp-action="Index">Category</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " asp-area="Espada_2" asp-controller="MyProperty" asp-action="Index">MyProperty</a>
+                            </li>
+                           
+                        }
                     </ul>
                     <partial name="_LoginPartial"/>
                 </div>
