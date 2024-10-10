@@ -169,6 +169,15 @@ namespace testwithapic_.Areas.Jinchuriki_1.Controllers
             return RedirectToAction("Index");
         }
 
+        //#region API CALLS
+        //[HttpGet]
+        ////public IActionResult GetAll(int id)
+        ////{
+        ////    //return Json({ });
+        ////}
+
+        //#endregion 
+
     }
 
 }

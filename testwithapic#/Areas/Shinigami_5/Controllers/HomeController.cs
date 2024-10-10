@@ -1,3 +1,4 @@
+using c_.DataAccess1.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using testwithapic_.Models;
@@ -8,6 +9,10 @@ namespace testwithapic_.Areas.Shinigami_5.Controllers
     [Area("Shinigami_5")]
     public class HomeController : Controller
     {
+        private readonly ILogger<HomeController> _logger;
+        private readonly IUnitOfWork _unitOfwork;
+
+
         //private readonly IScopedGuideService _scoped1;
         //private readonly IScopedGuideService _scoped2;
 
@@ -17,11 +22,10 @@ namespace testwithapic_.Areas.Shinigami_5.Controllers
         //private readonly ITransientGuidServices _transient1;
         //private readonly ITransientGuidServices _transient2;
 
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
         {
             _logger = logger;
+            _unitOfwork = unitOfWork;
         }
 
         //public HomeController(IScopedGuideService scopedGuid1,
@@ -41,7 +45,13 @@ namespace testwithapic_.Areas.Shinigami_5.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Articles> articlesList = _unitOfwork.Articles.GetAll();
+            return View(articlesList);
+        }
+        public IActionResult Read(int? id)
+        {
+            Articles article = _unitOfwork.Articles.GetFirstOrDefault(u => u.Id==id);
+            return View(article);
         }
 
         public IActionResult Privacy()
