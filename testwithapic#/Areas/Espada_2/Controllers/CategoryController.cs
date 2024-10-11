@@ -1,4 +1,6 @@
 ﻿using c_.DataAccess1.Repository.IRepository;
+using c_.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using testwithapic_.Data;
 using testwithapic_.Models;
@@ -6,6 +8,7 @@ using testwithapic_.Models;
 namespace testwithapic_.Areas.Espada_2.Controllers
 {
     [Area("Espada_2")]
+    [Authorize(Roles = $"{SD.Role_Jinchuriki},{SD.Role_Espada}")]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWrok;

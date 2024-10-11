@@ -1,6 +1,8 @@
 ﻿using c_.DataAccess1.Repository;
 using c_.DataAccess1.Repository.IRepository;
 using c_.Models.ViewModels;
+using c_.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -12,6 +14,7 @@ using testwithapic_.Models;
 namespace testwithapic_.Areas.Jinchuriki_1.Controllers
 {
     [Area("Jinchuriki_1")]
+    [Authorize(Roles = SD.Role_Jinchuriki)]
     public class ArticlesController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
