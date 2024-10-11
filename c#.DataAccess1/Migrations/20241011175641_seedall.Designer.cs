@@ -12,7 +12,7 @@ using testwithapic_.Data;
 namespace c_.DataAccess1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241011140121_seedall")]
+    [Migration("20241011175641_seedall")]
     partial class seedall
     {
         /// <inheritdoc />
