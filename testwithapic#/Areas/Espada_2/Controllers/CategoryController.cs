@@ -2,7 +2,7 @@
 using c_.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using testwithapic_.Data;
+using c_.DataAccess1.Data;
 using testwithapic_.Models;
 
 namespace testwithapic_.Areas.Espada_2.Controllers

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using c_.DataAccess1.Repository.IRepository;
-using testwithapic_.Data;
+using c_.DataAccess1.Data;
 using testwithapic_.Models;
 
 namespace c_.DataAccess1.Repository

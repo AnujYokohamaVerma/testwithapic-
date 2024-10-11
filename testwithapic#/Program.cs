@@ -1,12 +1,14 @@
 using c_.DataAccess1.Repository;
 using c_.DataAccess1.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
-using testwithapic_.Data;
+using c_.DataAccess1.Data;
 using testwithapic_.Models;
 using testwithapic_.Services;
 using Microsoft.AspNetCore.Identity;
 using c_.Utility;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Stripe;
+using c_.DataAccess1.Dbinitializer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,11 +25,18 @@ builder.Services.AddIdentity<IdentityUser,IdentityRole>(options => options.SignI
 //builder.Services.AddScoped<IArticlesRepository, ArticalesRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
+builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = $"/Identity/Account/Login";
     options.LogoutPath = $"/Identity/Account/Logout"; options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+});
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options => {
+    options.IdleTimeout = TimeSpan.FromMinutes(100);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
 });
 var app = builder.Build();
 
@@ -41,15 +50,26 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 app.UseRouting();
 
 app.UseAuthentication();
 
 app.UseAuthorization();
+app.UseSession();
+SeedDatabase();
 app.MapRazorPages(); 
 app.MapControllerRoute(
     name: "default",
     pattern: "{area=Shinigami_5}/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+void SeedDatabase()
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+        dbInitializer.Initialize();
+    }
+}
