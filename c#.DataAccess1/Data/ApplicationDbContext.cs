@@ -1,9 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Elfie.Serialization;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System.Drawing;
 using testwithapic_.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace testwithapic_.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base (options) 
         {
@@ -16,6 +20,7 @@ namespace testwithapic_.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Category>().HasData(
                 new Category { Id = 1, Name = "Action", DisplayOrder = 1 },
                 new Category { Id = 2, Name = "SciFi", DisplayOrder = 2 },
@@ -27,7 +32,9 @@ namespace testwithapic_.Data
                 new MyProperty { Id = 3, Name = "Games", DisplayOrder = 3 }
                 );
             modelBuilder.Entity<Articles>().HasData(
-               new Articles {Id = 1, Title = "ReadMe", Summary="Your not real", Artical = "WAKE UP!!! THEY DONT WANT YOU TO WAKE UP, YOU NEED TO STOP DOING WHAT THEY TELL YOU!!! YOUR REAL NAME IS AKENO!!", 
+               new Articles {Id = 1, Title = "ReadMe", Summary="Your not real", 
+                   Artical = "WAKE UP!!! THEY DONT WANT YOU TO WAKE UP, YOU NEED TO STOP DOING WHAT THEY TELL YOU!!! YOUR REAL NAME IS AKENO!!", 
+                   ImageFile = "/Images/Default/default.png",
                    CreatedDate = DateTime.Today, ModifiedDate = DateTime.Today}
                );
         }

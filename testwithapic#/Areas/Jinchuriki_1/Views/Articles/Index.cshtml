@@ -24,6 +24,9 @@
                 <th>
                     Summary
                 </th>
+                <th>
+
+                </th>
                 <th>    
                     Date Created
                 </th>
@@ -36,16 +39,23 @@
             @foreach (var obj in Model.OrderBy(u => u.Id))
             {
                     <tr>
-                        <td>
+                        <td class="col-1">
                         @obj.Title
                         </td>
-                        <td>
+                        <td class="col-3">
                         @obj.Summary
                         </td>
                         <td>
+                            <div class="w-75 btn-group-vertical" role="document">
+                            <a asp-controller="Articles" asp-action="Read" asp-route-Id="@obj.Id" class="btn btn-primary mx-2">
+                                <i class="bi bi-book"></i> Read
+                            </a>
+                            </div>
+                        </td>
+                        <td class="col-1">
                         @obj.CreatedDate
                         </td>
-                        <td>
+                        <td class="col-1">
                         @obj.ModifiedDate
                         </td>
                         <td>
@@ -64,3 +74,6 @@
         </tbody>
     </table>
 </div>
+@* @section Scripts{
+    <script src="~/js/Articles.js"></script>
+} *@
