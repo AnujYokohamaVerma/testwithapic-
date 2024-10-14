@@ -66,7 +66,9 @@ namespace c_.DataAccess1.Dbinitializer
                     Email = "anujlaverma@gmail.com",
                     Name = "Anuj Verma",
                     PhoneNumber = "1112223333",
-                }, "Admin123*").GetAwaiter().GetResult();
+                    LockoutEnabled = false, 
+                    EmailConfirmed = true
+                }, "Anuj180020!").GetAwaiter().GetResult();
 
 
                 ApplicationUser user = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "anujlaverma@gmail.com");

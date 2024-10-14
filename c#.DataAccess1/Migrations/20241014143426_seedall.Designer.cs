@@ -12,7 +12,7 @@ using c_.DataAccess1.Data;
 namespace c_.DataAccess1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241011202140_seedall")]
+    [Migration("20241014143426_seedall")]
     partial class seedall
     {
         /// <inheritdoc />
@@ -271,9 +271,9 @@ namespace c_.DataAccess1.Migrations
                         {
                             Id = 1,
                             Artical = "WAKE UP!!! THEY DONT WANT YOU TO WAKE UP, YOU NEED TO STOP DOING WHAT THEY TELL YOU!!! YOUR REAL NAME IS AKENO!!",
-                            CreatedDate = new DateTime(2024, 10, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(2024, 10, 14, 0, 0, 0, 0, DateTimeKind.Local),
                             ImageFile = "/Images/Default/default.png",
-                            ModifiedDate = new DateTime(2024, 10, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            ModifiedDate = new DateTime(2024, 10, 14, 0, 0, 0, 0, DateTimeKind.Local),
                             Summary = "Your not real",
                             Title = "ReadMe"
                         });

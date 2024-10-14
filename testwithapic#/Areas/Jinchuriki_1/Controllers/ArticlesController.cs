@@ -172,14 +172,15 @@ namespace testwithapic_.Areas.Jinchuriki_1.Controllers
             return RedirectToAction("Index");
         }
 
-        //#region API CALLS
-        //[HttpGet]
-        ////public IActionResult GetAll(int id)
-        ////{
-        ////    //return Json({ });
-        ////}
+        #region API CALLS
+        [HttpGet]
+        public IActionResult GetAll(int id)
+        {
+            List<Articles> objCategoryList = _unitOfWork.Articles.GetAll().ToList();
+            return Json(new { data = objCategoryList });
+        }
 
-        //#endregion 
+        #endregion 
 
     }
 
