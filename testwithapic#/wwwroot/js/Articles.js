@@ -8,7 +8,7 @@ function loadDataTable() {
         "ajax": {url:'/Jinchuriki_1/Articles/getall'},
         "columns": [
             { data: 'title', "width": "15%" },
-            { data: 'summary', "width": "15%" },
+            { data: 'summary', "width": "30%" },
             {
                 data: 'id',
                 "render": function (data) {
@@ -20,8 +20,8 @@ function loadDataTable() {
                 },
                 "width": "15"
             },
-            { data: 'createdDate', "width": "15%" },
-            { data: 'modifiedDate', "width": "25%" },
+            { data: 'createdDate', "width": "10%" },
+            { data: 'modifiedDate', "width": "10%" },
             {
                 data: 'id',
                 "render": function (data) {
