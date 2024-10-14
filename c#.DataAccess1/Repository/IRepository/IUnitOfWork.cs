@@ -11,6 +11,8 @@ namespace c_.DataAccess1.Repository.IRepository
         ICategoryRepository Category { get; }
         IArticlesRepository Articles { get; }
         IMyPropertyRepository MyProperty { get; }
+        IApplicationUserRepository ApplicationUser { get; }
+        //IProductImageRepository ProductImage { get; }
 
         void Save();
 

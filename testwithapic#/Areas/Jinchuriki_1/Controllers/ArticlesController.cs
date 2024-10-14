@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using testwithapic_.Data;
+using c_.DataAccess1.Data;
 using testwithapic_.Models;
 
 namespace testwithapic_.Areas.Jinchuriki_1.Controllers
@@ -172,14 +172,15 @@ namespace testwithapic_.Areas.Jinchuriki_1.Controllers
             return RedirectToAction("Index");
         }
 
-        //#region API CALLS
-        //[HttpGet]
-        ////public IActionResult GetAll(int id)
-        ////{
-        ////    //return Json({ });
-        ////}
+        #region API CALLS
+        [HttpGet]
+        public IActionResult GetAll(int id)
+        {
+            List<Articles> objCategoryList = _unitOfWork.Articles.GetAll().ToList();
+            return Json(new { data = objCategoryList });
+        }
 
-        //#endregion 
+        #endregion 
 
     }
 

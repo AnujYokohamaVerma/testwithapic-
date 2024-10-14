@@ -5,7 +5,7 @@ using System.Drawing;
 using testwithapic_.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace testwithapic_.Data
+namespace c_.DataAccess1.Data
 {
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
@@ -16,6 +16,7 @@ namespace testwithapic_.Data
         public DbSet<Category> Categoryies { get; set; }
         public DbSet<MyProperty> MyProperty { get; set; }
         public DbSet<Articles> Articles { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

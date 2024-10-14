@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using c_.DataAccess1.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
-using testwithapic_.Data;
+using c_.DataAccess1.Data;
 using testwithapic_.Models;
 
 namespace c_.DataAccess1.Repository

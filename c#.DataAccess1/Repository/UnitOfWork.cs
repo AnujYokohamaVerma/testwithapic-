@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using testwithapic_.Data;
+using c_.DataAccess1.Data;
 
 namespace c_.DataAccess1.Repository
 {
@@ -16,12 +16,16 @@ namespace c_.DataAccess1.Repository
         public IArticlesRepository Articles { get; private set; }
 
         public IMyPropertyRepository MyProperty { get; private set; }
+        public IApplicationUserRepository ApplicationUser { get; private set; }
+        //public IProductImageRepository ProductImage { get; private set; }
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
+           // ProductImage = new ProductImageRepository(_db);
             Category = new CategoryRepository(_db);
             Articles = new ArticalesRepository(_db);
             MyProperty = new MyPropertyRepository(_db);
+            ApplicationUser = new ApplicationUserRepository(_db);
         }
        
 

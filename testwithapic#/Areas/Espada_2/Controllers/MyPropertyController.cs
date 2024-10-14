@@ -1,6 +1,6 @@
 ﻿using c_.DataAccess1.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
-using testwithapic_.Data;
+using c_.DataAccess1.Data;
 using testwithapic_.Models;
 
 namespace testwithapic_.Areas.Espada_2.Controllers
