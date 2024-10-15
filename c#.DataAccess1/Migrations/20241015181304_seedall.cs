@@ -209,7 +209,7 @@ namespace c_.DataAccess1.Migrations
             migrationBuilder.InsertData(
                 table: "Articles",
                 columns: new[] { "Id", "Artical", "CreatedDate", "ImageFile", "ModifiedDate", "Summary", "Title" },
-                values: new object[] { 1, "WAKE UP!!! THEY DONT WANT YOU TO WAKE UP, YOU NEED TO STOP DOING WHAT THEY TELL YOU!!! YOUR REAL NAME IS AKENO!!", new DateTime(2024, 10, 14, 0, 0, 0, 0, DateTimeKind.Local), "/Images/Default/default.png", new DateTime(2024, 10, 14, 0, 0, 0, 0, DateTimeKind.Local), "Your not real", "ReadMe" });
+                values: new object[] { 1, "WAKE UP!!! THEY DONT WANT YOU TO WAKE UP, YOU NEED TO STOP DOING WHAT THEY TELL YOU!!! YOUR REAL NAME IS AKENO!!", new DateTime(2024, 10, 15, 0, 0, 0, 0, DateTimeKind.Local), "/Images/Default/default.png", new DateTime(2024, 10, 15, 0, 0, 0, 0, DateTimeKind.Local), "Your not real", "ReadMe" });
 
             migrationBuilder.InsertData(
                 table: "Categoryies",
