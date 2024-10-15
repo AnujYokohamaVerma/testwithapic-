@@ -22,14 +22,14 @@ namespace testwithapic_.Models
         public string Artical { get; set; }
         [DisplayName("Date Created")]
         public DateTime CreatedDate { get; set; }
-        [DisplayName("Created By:")]
-        public string Createdby { get; set; }
+        //[DisplayName("Created By:")]
+        //public string Createdby { get; set; }
 
         [DisplayName("Date Edited")]
         public DateTime ModifiedDate { get; set; }
 
-        [DisplayName("Modified By:")]
-        public string ModifiedBy { get; set; }
+        //[DisplayName("Modified By:")]
+        //public string ModifiedBy { get; set; }
 
 
 
