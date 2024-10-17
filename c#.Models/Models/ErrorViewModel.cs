@@ -1,4 +1,4 @@
-namespace testwithapic_.Models
+namespace ApolloWeb.Models
 {
     public class ErrorViewModel
     {

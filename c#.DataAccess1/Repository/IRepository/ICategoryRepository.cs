@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using testwithapic_.Models;
+using ApolloWeb.Models;
 
-namespace c_.DataAccess1.Repository.IRepository
+namespace Apollo.DataAccess1.Repository.IRepository
 {
     public interface ICategoryRepository : IRepository<Category>
     {

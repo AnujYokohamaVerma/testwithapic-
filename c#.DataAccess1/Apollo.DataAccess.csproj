@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>c_.DataAccess1</RootNamespace>
+    <RootNamespace>Apollo.DataAccess1</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -21,8 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\c#.Models\c#.Models.csproj" />
-    <ProjectReference Include="..\c#.Utility\c#.Utility.csproj" />
+    <ProjectReference Include="..\c#.Models\Apollo.Models.csproj" />
+    <ProjectReference Include="..\c#.Utility\Apollo.Utility.csproj" />
   </ItemGroup>
 
 </Project>

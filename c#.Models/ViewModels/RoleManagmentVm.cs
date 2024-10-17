@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using testwithapic_.Models;
+using ApolloWeb.Models;
 
-namespace c_.Models.ViewModels
+namespace Apollo.Models.ViewModels
 {
     public class RoleManagmentVM
     {

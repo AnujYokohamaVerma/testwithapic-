@@ -1,12 +1,12 @@
-﻿using c_.DataAccess1.Repository.IRepository;
+﻿using Apollo.DataAccess1.Repository.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using c_.DataAccess1.Data;
+using Apollo.DataAccess1.Data;
 
-namespace c_.DataAccess1.Repository
+namespace Apollo.DataAccess1.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {

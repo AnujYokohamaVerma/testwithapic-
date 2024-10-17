@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using c_.DataAccess1.Repository.IRepository;
-using c_.DataAccess1.Data;
-using testwithapic_.Models;
+using Apollo.DataAccess1.Repository.IRepository;
+using Apollo.DataAccess1.Data;
+using ApolloWeb.Models;
 
-namespace c_.DataAccess1.Repository
+namespace Apollo.DataAccess1.Repository
 {
     public class CategoryRepository : Repository<Category>, ICategoryRepository
     {

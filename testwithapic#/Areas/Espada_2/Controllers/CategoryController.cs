@@ -1,11 +1,11 @@
-﻿using c_.DataAccess1.Repository.IRepository;
-using c_.Utility;
+﻿using Apollo.DataAccess1.Repository.IRepository;
+using Apollo.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using c_.DataAccess1.Data;
-using testwithapic_.Models;
+using Apollo.DataAccess1.Data;
+using ApolloWeb.Models;
 
-namespace testwithapic_.Areas.Espada_2.Controllers
+namespace ApolloWeb.Areas.Espada_2.Controllers
 {
     [Area("Espada_2")]
     [Authorize(Roles = $"{SD.Role_Jinchuriki},{SD.Role_Espada}")]

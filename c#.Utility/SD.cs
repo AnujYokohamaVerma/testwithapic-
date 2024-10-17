@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace c_.Utility
+namespace Apollo.Utility
 {
     public static class SD
     {

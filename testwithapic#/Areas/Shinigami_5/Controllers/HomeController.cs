@@ -1,10 +1,10 @@
-using c_.DataAccess1.Repository.IRepository;
+using Apollo.DataAccess1.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using testwithapic_.Models;
-using testwithapic_.Services;
+using ApolloWeb.Models;
+using ApolloWeb.Services;
 
-namespace testwithapic_.Areas.Shinigami_5.Controllers
+namespace ApolloWeb.Areas.Shinigami_5.Controllers
 {
     [Area("Shinigami_5")]
     public class HomeController : Controller

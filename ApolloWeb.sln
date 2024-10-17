@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testwithapic#", "testwithapic#\testwithapic#.csproj", "{74D9840D-DF2E-4B4C-B831-EF33E7498C38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApolloWeb", "testwithapic#\ApolloWeb.csproj", "{74D9840D-DF2E-4B4C-B831-EF33E7498C38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "c#.DataAccess", "c#.DataAccess1\c#.DataAccess.csproj", "{C02AACAB-8B56-4A76-BB82-AAD6F4CFCAA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Apollo.DataAccess", "c#.DataAccess1\Apollo.DataAccess.csproj", "{C02AACAB-8B56-4A76-BB82-AAD6F4CFCAA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "c#.Models", "c#.Models\c#.Models.csproj", "{939227F7-44FE-4FD4-AAF2-542FBD2A1353}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Apollo.Models", "c#.Models\Apollo.Models.csproj", "{939227F7-44FE-4FD4-AAF2-542FBD2A1353}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "c#.Utility", "c#.Utility\c#.Utility.csproj", "{FCADE8E3-4F02-4328-8086-1C96EC2899CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Apollo.Utility", "c#.Utility\Apollo.Utility.csproj", "{FCADE8E3-4F02-4328-8086-1C96EC2899CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,9 +1,9 @@
-﻿using c_.DataAccess1.Repository.IRepository;
+﻿using Apollo.DataAccess1.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
-using c_.DataAccess1.Data;
-using testwithapic_.Models;
+using Apollo.DataAccess1.Data;
+using ApolloWeb.Models;
 
-namespace testwithapic_.Areas.Espada_2.Controllers
+namespace ApolloWeb.Areas.Espada_2.Controllers
 {
     [Area("Espada_2")]
     public class MyPropertyController : Controller

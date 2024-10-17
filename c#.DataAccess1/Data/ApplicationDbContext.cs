@@ -2,10 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.Drawing;
-using testwithapic_.Models;
+using ApolloWeb.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace c_.DataAccess1.Data
+namespace Apollo.DataAccess1.Data
 {
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {

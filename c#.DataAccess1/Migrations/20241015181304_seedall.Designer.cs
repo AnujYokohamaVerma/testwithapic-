@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using c_.DataAccess1.Data;
+using Apollo.DataAccess1.Data;
 
 #nullable disable
 
-namespace c_.DataAccess1.Migrations
+namespace Apollo.DataAccess1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20241015181304_seedall")]
@@ -232,7 +232,7 @@ namespace c_.DataAccess1.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("testwithapic_.Models.Articles", b =>
+            modelBuilder.Entity("ApolloWeb.Models.Articles", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -279,7 +279,7 @@ namespace c_.DataAccess1.Migrations
                         });
                 });
 
-            modelBuilder.Entity("testwithapic_.Models.Category", b =>
+            modelBuilder.Entity("ApolloWeb.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -320,7 +320,7 @@ namespace c_.DataAccess1.Migrations
                         });
                 });
 
-            modelBuilder.Entity("testwithapic_.Models.MyProperty", b =>
+            modelBuilder.Entity("ApolloWeb.Models.MyProperty", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -361,7 +361,7 @@ namespace c_.DataAccess1.Migrations
                         });
                 });
 
-            modelBuilder.Entity("testwithapic_.Models.ApplicationUser", b =>
+            modelBuilder.Entity("ApolloWeb.Models.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 

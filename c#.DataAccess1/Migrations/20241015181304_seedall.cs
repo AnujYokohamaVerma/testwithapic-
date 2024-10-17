@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace c_.DataAccess1.Migrations
+namespace Apollo.DataAccess1.Migrations
 {
     /// <inheritdoc />
     public partial class seedall : Migration

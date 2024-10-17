@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace c_.DataAccess1.Repository.IRepository
+namespace Apollo.DataAccess1.Repository.IRepository
 {
     public interface IRepository<T> where T : class
     {

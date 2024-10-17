@@ -1,8 +1,8 @@
-﻿using c_.DataAccess1.Data;
-using c_.Models;
-using c_.Utility;
-using c_.DataAccess1.Dbinitializer;
-using c_.Utility;
+﻿using Apollo.DataAccess1.Data;
+using Apollo.Models;
+using Apollo.Utility;
+using Apollo.DataAccess1.Dbinitializer;
+using Apollo.Utility;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,10 +10,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using c_.DataAccess1.Data;
-using testwithapic_.Models;
+using Apollo.DataAccess1.Data;
+using ApolloWeb.Models;
 
-namespace c_.DataAccess1.Dbinitializer
+namespace Apollo.DataAccess1.Dbinitializer
 {
     public class DbInitializer : IDbInitializer
     {

@@ -1,16 +1,16 @@
-﻿using c_.DataAccess1.Repository.IRepository;
-using c_.DataAccess1.Data;
-using c_.Models;
-using c_.DataAccess1.Repository;
+﻿using Apollo.DataAccess1.Repository.IRepository;
+using Apollo.DataAccess1.Data;
+using Apollo.Models;
+using Apollo.DataAccess1.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using testwithapic_.Models;
+using ApolloWeb.Models;
 
-namespace c_.DataAccess1.Repository
+namespace Apollo.DataAccess1.Repository
 {
     public class ApplicationUserRepository : Repository<ApplicationUser>, IApplicationUserRepository
     {

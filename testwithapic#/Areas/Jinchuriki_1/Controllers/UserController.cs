@@ -1,8 +1,8 @@
-﻿using c_.DataAccess1.Repository.IRepository;
-using c_.DataAccess1.Data;
-using c_.Models;
-using c_.Models.ViewModels;
-using c_.Utility;
+﻿using Apollo.DataAccess1.Repository.IRepository;
+using Apollo.DataAccess1.Data;
+using Apollo.Models;
+using Apollo.Models.ViewModels;
+using Apollo.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -10,9 +10,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Data;
-using testwithapic_.Models;
+using ApolloWeb.Models;
 
-namespace testwithapic_.Areas.Jinchuriki_1.Controllers
+namespace ApolloWeb.Areas.Jinchuriki_1.Controllers
 {
     [Area("Jinchuriki_1")]
     [Authorize(Roles = SD.Role_Jinchuriki)]

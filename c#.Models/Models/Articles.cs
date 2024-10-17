@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace testwithapic_.Models
+namespace ApolloWeb.Models
 {
     public class Articles
     {

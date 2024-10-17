@@ -1,13 +1,13 @@
-﻿using c_.Models;
-using c_.DataAccess1.Repository.IRepository;
+﻿using Apollo.Models;
+using Apollo.DataAccess1.Repository.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using testwithapic_.Models;
+using ApolloWeb.Models;
 
-namespace c_.DataAccess1.Repository.IRepository
+namespace Apollo.DataAccess1.Repository.IRepository
 {
     public interface IApplicationUserRepository : IRepository<ApplicationUser>
     {

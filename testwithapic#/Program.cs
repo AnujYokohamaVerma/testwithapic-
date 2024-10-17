@@ -1,14 +1,14 @@
-using c_.DataAccess1.Repository;
-using c_.DataAccess1.Repository.IRepository;
+using Apollo.DataAccess1.Repository;
+using Apollo.DataAccess1.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
-using c_.DataAccess1.Data;
-using testwithapic_.Models;
-using testwithapic_.Services;
+using Apollo.DataAccess1.Data;
+using ApolloWeb.Models;
+using ApolloWeb.Services;
 using Microsoft.AspNetCore.Identity;
-using c_.Utility;
+using Apollo.Utility;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Stripe;
-using c_.DataAccess1.Dbinitializer;
+using Apollo.DataAccess1.Dbinitializer;
 
 var builder = WebApplication.CreateBuilder(args);
 
